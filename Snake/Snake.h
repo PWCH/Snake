@@ -5,7 +5,7 @@
 using namespace sf;
 using namespace std;
 
-//Strktura weza
+//Struktura weza
 struct SnakeSegment
 {
 	SnakeSegment(int x, int y) : position(x, y) {}
@@ -28,18 +28,22 @@ public:
 	void setDirection(Direction dir);
 	//Pobieranie kierunku
 	Direction getDirection();
+	//Pobieranie pozycji
+	Vector2i getPosition();
 	//Pobieranie ilosci zyc
 	int getLives();
 	//Pobieranie wyniku
 	int getScore();
+	//Pobieranie predkosci 
+	int getSpeed();
 	//Zwiekszanie wyniku
 	void increaseScore();
 	//Strata zycia
 	bool hasLost();
 
 	//Przegranie
-	void Lose();
-	//Ustawienie przegrania
+	void lose();
+	//Przelacznik przegrania
 	void toggleLost();
 
 	//Zwiekszanie weza

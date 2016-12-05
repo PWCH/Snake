@@ -21,7 +21,7 @@ void Snake::reset()
 	snakeBody.push_back(SnakeSegment(5, 5));
 
 	//Ustawienie kierunku na none, gracz wybiera strone
-	//setDirection(Direction::None);
+	setDirection(Direction::None);
 
 	//Parametry startowe weza
 	snakeSpeed = 15;
@@ -29,3 +29,49 @@ void Snake::reset()
 	snakeLost = false;
 }
 
+void Snake::setDirection(Direction direction)
+{
+	dir = direction;
+}
+
+Direction Snake::getDirection()
+{
+	return dir;
+
+}
+int Snake::getSpeed()
+{
+	return snakeSpeed;
+}
+int Snake::getLives()
+{
+	return snakeLives;
+}
+int Snake::getScore()
+{
+	return snakeScore;
+}
+
+Vector2i Snake::getPosition()
+{
+	//Jesli snakeBody nie jest puste to zwroc pozycje pierwszego segmentu lub pozycje 1 1
+	return (!snakeBody.empty() ? snakeBody.front().position : Vector2i(1, 1));
+}
+
+//Deklaracja metod zmieniajacy podstawowe paramentry
+void Snake::increaseScore()
+{
+	snakeScore += 10;
+}
+bool Snake::hasLost()
+{
+	return snakeLost;
+}
+void Snake::lose()
+{
+	snakeLost = true;
+}
+void Snake::toggleLost()
+{
+	snakeLost = !snakeLost;
+}
