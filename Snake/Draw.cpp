@@ -4,10 +4,10 @@ using namespace sf;
 
 void Engine::draw()
 {
-	//Czyœci ostatni¹ klatkê
+	//Czysci ostatnia klatke
 	gameWindow.clear(Color::White);
 
-	//Rysuje t³o
+	//Rysuje tlo
 	gameWindow.draw(gameBackgroudSprite);
 
 	gameWindow.display();

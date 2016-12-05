@@ -9,18 +9,17 @@ class Engine
 public:
 	Engine();
 	~Engine();
-	//Start wywo³a wszystkie prywatne funkcje
+	//Start wywola wszystkie prywatne funkcje
 	void start();
 private:
 	RenderWindow gameWindow;
-	//Deklaracja sprite i tekstury t³a
+	//Deklaracja sprite i tekstury tla
 	Sprite gameBackgroudSprite;
 	Texture gameBackgroudTexture;
 
 	//Inicjacja gracza
-	Snake sSnake;
 
-	//Prywatne funckje tylko do u¿ytku wewnêtrznego
+	//Prywatne funckje tylko do uzytku wewnetrznego
 	//void input();
 	//void update(float dtAsSeconds);
 	void draw();
