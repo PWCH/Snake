@@ -54,7 +54,7 @@ int Snake::getScore()
 
 Vector2i Snake::getPosition()
 {
-	//Jesli snakeBody nie jest puste to zwroc pozycje pierwszego segmentu lub pozycje 1 1
+	//Jesli snakeBody nie jest puste to zwroc pozycje pierwszego segmentu w innym przypadku pozycje 1 1
 	return (!snakeBody.empty() ? snakeBody.front().position : Vector2i(1, 1));
 }
 
@@ -74,4 +74,66 @@ void Snake::lose()
 void Snake::toggleLost()
 {
 	snakeLost = !snakeLost;
+}
+
+//Funkcja zwiekszajaca weza
+void Snake::increase()
+{
+	if (snakeBody.empty())
+		return;
+	//Wskaznik do ogona weza (ostatniego segmentu)
+	SnakeSegment &tail_head = snakeBody[snakeBody.size() - 1];
+
+	if (snakeBody.size() > 1)
+	{
+		//Wskaznik do przeostatniego segmentu
+		SnakeSegment &tail_bone = snakeBody[snakeBody.size() - 2];
+		//Ostatnie dwa segmenty weza sa w pionie  
+		if (tail_head.position.x == tail_bone.position.x)
+		{
+			//Ostatni jest nizej niz przedostatni (waz idzie w gore)
+			if (tail_head.position.y > tail_bone.position.y)
+			{
+				//Dodanie segmentu w pozycji x, y+1
+				snakeBody.push_back(SnakeSegment(tail_head.position.x, tail_bone.position.y + 1));
+			}
+			else
+			{
+				snakeBody.push_back(SnakeSegment(tail_head.position.x, tail_bone.position.y - 1));
+			}
+		}
+		//Ostatnie dwa segmenty sa w poziomie
+		else if (tail_head.position.y == tail_bone.position.y)
+		{
+			//Ostatni jest bardziej po prawej niz przedostatni (waz idzie w lewo)
+			if (tail_head.position.x > tail_bone.position.x)
+			{
+				snakeBody.push_back(SnakeSegment(tail_head.position.x + 1, tail_bone.position.y));
+			}
+			else
+			{
+				snakeBody.push_back(SnakeSegment(tail_head.position.x - 1, tail_bone.position.y));
+			}
+		}
+	}
+	else
+	{
+		//Zwiekszanie weza gdy klikniety dany przycisk
+		if (dir == Direction::Up)
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x, tail_head.position.y + 1));
+		}
+		else if(dir == Direction::Down)
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x, tail_head.position.y - 1));
+		}
+		else if(dir == Direction::Right)
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x - 1, tail_head.position.y));
+		}
+		else if (dir == Direction::Left)
+		{
+			snakeBody.push_back(SnakeSegment(tail_head.position.x + 1, tail_head.position.y));
+		}
+	}
 }
