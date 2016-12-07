@@ -137,3 +137,32 @@ void Snake::increase()
 		}
 	}
 }
+
+void Snake::update()
+{
+	//Pomijamy ruch i kolizje gdy snake jest pusty lub nie wykryto startowego klawisza
+	if (snakeBody.empty())
+		return;
+	if (dir == Direction::None)
+		return;
+	move();
+	sCollision();
+}
+
+void Snake::move()
+{
+	//Przesuwamy weza od tylu
+	for (int i = snakeBody.size() - 1; i > 0; i--)
+	{
+		snakeBody[i].position = snakeBody[i - 1].position;
+	}
+	//Przesuwamy glowe weza 
+	if (dir == Direction::Left)
+		--snakeBody[0].position.x;
+	else if (dir == Direction::Right)
+		++snakeBody[0].position.x;
+	else if (dir == Direction::Up)
+		--snakeBody[0].position.y;
+	else if (dir == Direction::Down)
+		++snakeBody[0].position.y;
+}
