@@ -18,7 +18,6 @@ private:
 	Texture gameBackgroudTexture;
 
 	//Inicjacja gracza
-
 	//Prywatne funckje tylko do uzytku wewnetrznego
 	//void input();
 	//void update(float dtAsSeconds);

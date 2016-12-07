@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include <vector>
 
 using namespace sf;
@@ -57,6 +58,8 @@ public:
 	void update();
 	//Metoda skracaja weza
 	void cut(int numberOfSegments);
+	//Metoda rysujaca weza
+	void render(RenderWindow &gameWindow);
 
 private:
 	//Sprawdznie kolizji
@@ -74,5 +77,8 @@ private:
 	int snakeLost;
 	//Shape weza
 	RectangleShape snakeRect;
-	
+	//Tekstura glowy weza
+	Texture snakeHeadTex;
+	//Tekstura ciala weza
+	Texture snakeTex;
 };

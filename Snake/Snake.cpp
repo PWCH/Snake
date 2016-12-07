@@ -166,3 +166,66 @@ void Snake::move()
 	else if (dir == Direction::Down)
 		++snakeBody[0].position.y;
 }
+
+void Snake::cut(int numberOfSegments)
+{
+	//Usuwanie z vectora podana liczbe segmentow ze strata zycia
+	for (int i = 0; i < numberOfSegments; i++)
+	{
+		snakeBody.pop_back();
+	}
+	--snakeLives;
+	if (!snakeLives)
+	{
+		lose();
+		return;
+	}
+}
+
+void Snake::sCollision()
+{
+	//Sprawdzanie kolizji gdy waz wiekszy od 4
+	if (snakeBody.size() < 5)
+		return;
+	//Wskaznik do glowy weza
+	SnakeSegment &head = snakeBody.front();
+	//Iteracja, itr wskazuje na pierwszy element vectora i idzie az do konca vectora
+	for (auto itr = snakeBody.begin() + 1; itr != snakeBody.end(); ++itr)
+	{
+		//Jesli pozycja glowy == pozycji segmentu w ktorym jest teraz iterator nastepuje odciecie ogona
+		if (itr->position == head.position)
+		{
+			int segments = snakeBody.end() - itr;
+			//Metoda odcinania ogona 
+			cut(segments);
+			break;
+		}
+	}
+}
+
+void Snake::render(RenderWindow &gameWindow)
+{
+	if (snakeBody.empty())
+		return;
+
+	//Ustawianie i rysowanie glowy weza
+	auto head = snakeBody.begin();
+	if (!(snakeHeadTex.loadFromFile("data/snake.png")))
+	{
+		cout << "Nie zaladowano tekstury glowy weza";
+	}
+	snakeRect.setTexture(&snakeHeadTex);
+	snakeRect.setPosition(head->position.x * size, head->position.y * size);
+	gameWindow.draw(snakeRect);
+	//Ustawianie i rysowanie ciala
+	if (!(snakeTex.loadFromFile("data/snake.png")))
+	{
+		cout << "Nie zaladowano tekstury weza";
+	}
+	snakeRect.setTexture(&snakeTex);
+	for (auto itr = snakeBody.begin() + 1; itr != snakeBody.end(); ++itr)
+	{
+		snakeRect.setPosition(itr->position.x * size, itr->position.y * size);
+		gameWindow.draw(snakeRect);
+	}
+}
