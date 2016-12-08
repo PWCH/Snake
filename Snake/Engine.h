@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Snake.h"
+#include "World.h"
 
 using namespace sf;
 
@@ -9,8 +10,22 @@ class Engine
 public:
 	Engine();
 	~Engine();
-	//Start wywola wszystkie prywatne funkcje
+	
+	//Obsluga klawiatury
+	void input();
+	void update();
 	void start();
+	void draw();
+	//Rzut okna
+	Window *getWindow();
+	Vector2u Wi
+	//Zwraca czas ktory uplynal
+	Time getElapsed();
+	//Resetuje zegar
+	void restartClock();
+	Clock clock;
+	Time elapsed;
+
 private:
 	RenderWindow gameWindow;
 	//Deklaracja sprite i tekstury tla
@@ -18,8 +33,7 @@ private:
 	Texture gameBackgroudTexture;
 
 	//Inicjacja gracza
-	//Prywatne funckje tylko do uzytku wewnetrznego
-	//void input();
-	//void update(float dtAsSeconds);
-	void draw();
+	Snake snake;
+	World world;
+
 };

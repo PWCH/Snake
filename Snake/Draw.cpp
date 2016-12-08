@@ -4,12 +4,11 @@ using namespace sf;
 
 void Engine::draw()
 {
-	//Czysci ostatnia klatke
-	gameWindow.clear(Color::White);
-	
-	//Rysuje tlo
+	//gameWindow.clear(Color::White);
+
+	//// (Tutaj problem)
+	world.render(gameWindow);
+	snake.render(gameWindow);
 	gameWindow.draw(gameBackgroudSprite);
-
 	gameWindow.display();
-
 }

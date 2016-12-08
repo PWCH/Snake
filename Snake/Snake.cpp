@@ -210,7 +210,7 @@ void Snake::render(RenderWindow &gameWindow)
 
 	//Ustawianie i rysowanie glowy weza
 	auto head = snakeBody.begin();
-	if (!(snakeHeadTex.loadFromFile("data/snake.png")))
+	if (!(snakeHeadTex.loadFromFile("data/snake.jpg")))
 	{
 		cout << "Nie zaladowano tekstury glowy weza";
 	}
@@ -218,7 +218,7 @@ void Snake::render(RenderWindow &gameWindow)
 	snakeRect.setPosition(head->position.x * size, head->position.y * size);
 	gameWindow.draw(snakeRect);
 	//Ustawianie i rysowanie ciala
-	if (!(snakeTex.loadFromFile("data/snake.png")))
+	if (!(snakeTex.loadFromFile("data/snakeb.jpg")))
 	{
 		cout << "Nie zaladowano tekstury weza";
 	}

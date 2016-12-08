@@ -1,6 +1,6 @@
 #include "Engine.h"
 
-Engine::Engine()
+Engine::Engine(): gameWindow(),snake(world.getBlockSize()),world(Vector2u(800,600))
 {
 	//Pobiera rozdzielczosc ekranu, tworzy okno gry
 	Vector2f resolution;
@@ -16,22 +16,35 @@ Engine::Engine()
 
 void Engine::start()
 {
-	Clock clock;
 
 	while (gameWindow.isOpen())
 	{
-		//Restart zegara i przypisanie czasu do time
-		Time time = clock.restart();
-
-		float timeAsSeconds = time.asSeconds();
-
-		//input();
-		//update(timeAsSeconds);
 		draw();
+		input();
+		update();
+		restartClock();
 	}
 
 }
 
+Time Engine::getElapsed()
+{
+	return elapsed;
+}
+
+void Engine::restartClock()
+{
+	elapsed += clock.restart();
+}
+
 Engine::~Engine()
 {
+}
+
+void Engine::update()
+{
+		snake.update();
+		world.update(snake);
+		if (snake.hasLost())
+			snake.reset();
 }
