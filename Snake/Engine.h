@@ -16,9 +16,6 @@ public:
 	void update();
 	void start();
 	void draw();
-	//Rzut okna
-	Window *getWindow();
-	Vector2u Wi
 	//Zwraca czas ktory uplynal
 	Time getElapsed();
 	//Resetuje zegar

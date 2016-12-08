@@ -67,7 +67,7 @@ private:
 	//Vektor segmentow weza
 	SnakeContainer snakeBody;
 	//Wielkosc grafiki weza
-	int size;
+	int size = 16;
 	//Kierunek biezacy
 	Direction dir;
 	//Predkosc, liczba zyc, wynik, stracone
@@ -76,7 +76,7 @@ private:
 	int snakeScore;
 	int snakeLost;
 	//Shape weza
-	RectangleShape snakeRect;
+	Sprite snakeRect;
 	//Tekstura glowy weza
 	Texture snakeHeadTex;
 	//Tekstura ciala weza

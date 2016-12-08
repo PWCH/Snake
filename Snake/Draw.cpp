@@ -7,8 +7,8 @@ void Engine::draw()
 	//gameWindow.clear(Color::White);
 
 	//// (Tutaj problem)
-	world.render(gameWindow);
-	snake.render(gameWindow);
 	gameWindow.draw(gameBackgroudSprite);
+	snake.render(gameWindow);
+	world.render(gameWindow);
 	gameWindow.display();
 }

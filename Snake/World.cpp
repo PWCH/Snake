@@ -73,7 +73,7 @@ void World::render(RenderWindow &window)
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		window.draw(bounds[4]);
+		window.draw(bounds[i]);
 	}
 	window.draw(foodShape);
 }

@@ -3,7 +3,7 @@
 Engine::Engine(): gameWindow(),snake(world.getBlockSize()),world(Vector2u(800,600))
 {
 	//Pobiera rozdzielczosc ekranu, tworzy okno gry
-	Vector2f resolution;
+	Vector2u resolution;
 	resolution.x = 800;
 	resolution.y = 600;
 
@@ -16,11 +16,11 @@ Engine::Engine(): gameWindow(),snake(world.getBlockSize()),world(Vector2u(800,60
 
 void Engine::start()
 {
-
+	snake.reset();
 	while (gameWindow.isOpen())
 	{
-		draw();
 		input();
+		draw();
 		update();
 		restartClock();
 	}
@@ -43,8 +43,13 @@ Engine::~Engine()
 
 void Engine::update()
 {
+	float timestep = 0.1 / snake.getSpeed();
+	float timeInSec = elapsed.asMilliseconds();
+	if (timeInSec >= timestep)
+	{
 		snake.update();
 		world.update(snake);
 		if (snake.hasLost())
 			snake.reset();
+	}
 }

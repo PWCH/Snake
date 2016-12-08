@@ -3,8 +3,8 @@
 //Konstruktor ustawiajacy wielkosc Shape weza
 Snake::Snake(int blockSize)
 {
-	size = blockSize;
-	snakeRect.setSize(Vector2f(size - 1, size - 1));
+	size = 16;
+	//snakeRect.setSize(Vector2f(size - 1, size - 1));
 };
 Snake::~Snake()
 {
@@ -207,22 +207,21 @@ void Snake::render(RenderWindow &gameWindow)
 {
 	if (snakeBody.empty())
 		return;
-
 	//Ustawianie i rysowanie glowy weza
 	auto head = snakeBody.begin();
-	if (!(snakeHeadTex.loadFromFile("data/snake.jpg")))
+	if (!(snakeHeadTex.loadFromFile("data/snake.png")))
 	{
 		cout << "Nie zaladowano tekstury glowy weza";
 	}
-	snakeRect.setTexture(&snakeHeadTex);
+	snakeRect.setTexture(snakeHeadTex);
 	snakeRect.setPosition(head->position.x * size, head->position.y * size);
 	gameWindow.draw(snakeRect);
 	//Ustawianie i rysowanie ciala
-	if (!(snakeTex.loadFromFile("data/snakeb.jpg")))
+	if (!(snakeTex.loadFromFile("data/snakeb.png")))
 	{
 		cout << "Nie zaladowano tekstury weza";
 	}
-	snakeRect.setTexture(&snakeTex);
+	snakeRect.setTexture(snakeTex);
 	for (auto itr = snakeBody.begin() + 1; itr != snakeBody.end(); ++itr)
 	{
 		snakeRect.setPosition(itr->position.x * size, itr->position.y * size);
