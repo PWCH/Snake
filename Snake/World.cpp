@@ -4,7 +4,7 @@
 
 World::World(Vector2u wSize)
 {
-	size = 16;
+	size = 20;
 	//Przypisanie rozmiarow okna
 	windowSize = wSize;
 	respawnFood();
@@ -13,6 +13,7 @@ World::World(Vector2u wSize)
 		cout << "Nie zaladowano tekstury jedzenia";
 	}
 	foodShape.setTexture(&foodTexture);
+	foodShape.setOrigin(Vector2f(size / 2, size / 2));
 	foodShape.setSize(Vector2f(size - 1, size - 1));
 
 	//Pêtla ustawiaj¹ca krawêdzie

@@ -7,8 +7,9 @@ void Engine::draw()
 	//gameWindow.clear(Color::White);
 
 	//// (Tutaj problem)
+	gameWindow.setFramerateLimit(10);
 	gameWindow.draw(gameBackgroudSprite);
-	snake.render(gameWindow);
 	world.render(gameWindow);
+	snake.render(gameWindow);
 	gameWindow.display();
 }

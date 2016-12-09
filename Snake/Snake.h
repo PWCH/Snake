@@ -21,7 +21,7 @@ enum class Direction { None, Up, Down, Left, Right };
 class Snake
 {
 public:
-	Snake(int blockSize);
+	Snake();
 	~Snake();
 
 	//Przydatne metody
@@ -67,7 +67,7 @@ private:
 	//Vektor segmentow weza
 	SnakeContainer snakeBody;
 	//Wielkosc grafiki weza
-	int size = 16;
+	int size = 32;
 	//Kierunek biezacy
 	Direction dir;
 	//Predkosc, liczba zyc, wynik, stracone
