@@ -52,6 +52,7 @@ void World::respawnFood()
 void World::update(Snake &player)
 {
 	//Zwiekszanie weza gdy pozycja weza jest rowna pozycji jedzenia
+	cout << "pozycja gracza: %d pozycja itemki %d";
 	if (player.getPosition() == item)
 	{
 		player.increase();
