@@ -44,7 +44,7 @@ void World::respawnFood()
 	//Maksymalne pole gdzie moze znalezc sie jedzenie (jeszcze trzeba zmienic)
 	int maxX = (windowSize.x / size) - 2;
 	int maxY = (windowSize.y / size) - 2;
-	//Losowe umieszczanie jedzenia
+	//Losowe umieszczanie jedzenia 
 	item = Vector2i(rand() % maxX + 1, rand() % maxY + 1);
 	foodShape.setPosition(item.x * size, item.y * size);
 }
