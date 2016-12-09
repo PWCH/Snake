@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Snake.h"
 #include "World.h"
+#include "Textbox.h"
 
 using namespace sf;
 
@@ -22,13 +23,13 @@ public:
 	void restartClock();
 	Clock clock;
 	Time elapsed;
+	Textbox textbox;
 
 private:
 	RenderWindow gameWindow;
 	//Deklaracja sprite i tekstury tla
 	Sprite gameBackgroudSprite;
 	Texture gameBackgroudTexture;
-
 	//Inicjacja gracza
 	Snake snake;
 	World world;

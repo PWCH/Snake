@@ -20,7 +20,6 @@ Textbox::~Textbox()
 void Textbox::setup(int visible, int charSize, int width, Vector2f screenPos)
 {
 	numVisible = visible;
-
 	//Margines czcionki (gorny i lewy)
 	Vector2f offset(2.0f, 2.0f);
 
@@ -32,9 +31,9 @@ void Textbox::setup(int visible, int charSize, int width, Vector2f screenPos)
 	content.setFont(font);
 	content.setString("");
 	content.setCharacterSize(charSize);
-	content.setFillColor(Color::Black);
 	content.setPosition(screenPos + offset);
-
+	//Ustawienie koloru b³¹d 'sf::Text::setColor': was declared deprecated
+	content.setFillColor(Color::Black);
 	//Cechy tla pola tekstowego
 	textBackground.setSize(Vector2f(width, visible * (charSize * 1.2f)));
 	textBackground.setFillColor(Color::White);
@@ -44,7 +43,7 @@ void Textbox::setup(int visible, int charSize, int width, Vector2f screenPos)
 void Textbox::add(string message)
 {
 	messages.push_back(message);
-	if (message.size() < 6)
+	if (message.size() < 10)
 		return;
 	//Usuwa wybrany element z vectora
 	messages.erase(messages.begin());
@@ -63,12 +62,14 @@ void Textbox::render(RenderWindow &window)
 	{
 		//Dolacza wiadomosc do stringa
 		contentR.append(itr + "\n");
+		//cout << "Dolaczono";
 	}
 
 	if (contentR != "");
 	{
 		content.setString(contentR);
 		window.draw(textBackground);
+		//cout << "Rysuje";
 		window.draw(content);
 	}
 }

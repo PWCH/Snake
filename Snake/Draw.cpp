@@ -11,5 +11,6 @@ void Engine::draw()
 	gameWindow.draw(gameBackgroudSprite);
 	world.render(gameWindow);
 	snake.render(gameWindow);
+	textbox.render(gameWindow);
 	gameWindow.display();
 }
