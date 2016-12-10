@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Snake.h"
 
 using namespace sf;
@@ -30,4 +31,5 @@ private:
 	Texture foodTexture;
 	//Shape krawedzi
 	RectangleShape bounds[4];
+	Music music;
 };

@@ -13,16 +13,17 @@ Engine::Engine(): gameWindow(),snake(),world(Vector2u(800,600))
 	gameBackgroudTexture.loadFromFile("data/background.png");
 	gameBackgroudSprite.setTexture(gameBackgroudTexture);
 	textbox.setup(5, 14, 250, Vector2f(225, 0));
-	string live = "Liczba zyc: " + snake.getLives();
+	live = "Liczba zyc: " + snake.getLives();
 	textbox.add(live);
-	string score = "Wynik: " + snake.getScore();
+	score = "Wynik: " + snake.getScore();
 	textbox.add(score);
-	cout << snake.getLives();
+	textbox.render(gameWindow);
+	//cout << snake.getLives();
+	snake.reset();
 }
 
 void Engine::start()
 {
-	snake.reset();
 	while (gameWindow.isOpen())
 	{
 		input();
@@ -49,6 +50,20 @@ Engine::~Engine()
 
 void Engine::update()
 {
+	//switch (menu)
+	//{
+	//	case(StateType::Intro):
+	//		updateIntro();
+	//		break;
+	//	case(StateType::Game):
+	//		updateGame();
+	//		break;
+	//	case(StateType::MainMenu):
+	//		updateMenu();
+	//		break;
+	//	default:
+	//		break;
+	//}
 	float timestep = 0.1f / snake.getSpeed();
 	float timeInSec = elapsed.asSeconds();
 	if (timeInSec >= timestep)

@@ -33,5 +33,11 @@ private:
 	//Inicjacja gracza
 	Snake snake;
 	World world;
+	//StateType menu;
+	string score;
+	string live;
+};
 
+enum class StateType {
+	Intro = 1, MainMenu, Game, Paused, GameOver, Credits
 };

@@ -12,6 +12,10 @@ World::World(Vector2u wSize)
 	{
 		cout << "Nie zaladowano tekstury jedzenia";
 	}
+	if (!(music.openFromFile("data/musiceat.ogg")))
+	{
+		cout << "Nie zaladowana dzwieku jedzenia";
+	}
 	foodShape.setTexture(&foodTexture);
 	foodShape.setOrigin(Vector2f(size / 2, size / 2));
 	foodShape.setSize(Vector2f(size - 1, size - 1));
@@ -54,6 +58,7 @@ void World::update(Snake &player)
 	//Zwiekszanie weza gdy pozycja weza jest rowna pozycji jedzenia
 	if (player.getPosition() == item)
 	{
+		music.play();
 		player.increase();
 		player.increaseScore();
 		respawnFood();
