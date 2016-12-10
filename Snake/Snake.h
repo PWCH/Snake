@@ -67,7 +67,7 @@ private:
 	//Vektor segmentow weza
 	SnakeContainer snakeBody;
 	//Wielkosc grafiki weza
-	int size = 32;
+	int size = 20;
 	//Kierunek biezacy
 	Direction dir;
 	//Predkosc, liczba zyc, wynik, stracone

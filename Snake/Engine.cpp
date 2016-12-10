@@ -26,6 +26,13 @@ void Engine::start()
 {
 	while (gameWindow.isOpen())
 	{
+		Event event;
+		while (gameWindow.pollEvent(event))
+		{
+			// Zamykanie okna - exit
+			if (event.type == sf::Event::Closed)
+				gameWindow.close();
+		}
 		input();
 		draw();
 		update();

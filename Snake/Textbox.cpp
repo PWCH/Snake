@@ -32,7 +32,7 @@ void Textbox::setup(int visible, int charSize, int width, Vector2f screenPos)
 	content.setString("");
 	content.setCharacterSize(charSize);
 	content.setPosition(screenPos + offset);
-	//Ustawienie koloru b³¹d 'sf::Text::setColor': was declared deprecated
+	//Ustawienie koloru
 	content.setFillColor(Color::Black);
 	//Cechy tla pola tekstowego
 	textBackground.setSize(Vector2f(width, visible * (charSize * 1.2f)));
