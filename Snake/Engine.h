@@ -23,7 +23,6 @@ public:
 	void restartClock();
 	Clock clock;
 	Time elapsed;
-	Textbox textbox;
 
 private:
 	RenderWindow gameWindow;
@@ -36,6 +35,8 @@ private:
 	//StateType menu;
 	string score;
 	string live;
+	Textbox scoreBox;
+	Textbox liveBox;
 };
 
 enum class StateType {

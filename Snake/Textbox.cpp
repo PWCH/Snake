@@ -20,11 +20,11 @@ Textbox::~Textbox()
 void Textbox::setup(int visible, int charSize, int width, Vector2f screenPos)
 {
 	numVisible = visible;
-	//Margines czcionki (gorny i lewy)
-	Vector2f offset(2.0f, 2.0f);
+	//Margines czcionki (lewy , gorny)
+	Vector2f offset(4.0f, 0.0f);
 
 	//Cechy czcionki
-	if (!(font.loadFromFile("data/above.ttf")))
+	if (!(font.loadFromFile("data/above.otf")))
 	{
 		cout << "Nie zaladowano czcionki!";
 	}
@@ -43,7 +43,7 @@ void Textbox::setup(int visible, int charSize, int width, Vector2f screenPos)
 void Textbox::add(string message)
 {
 	messages.push_back(message);
-	if (message.size() < 10)
+	if (message.size() < 30)
 		return;
 	//Usuwa wybrany element z vectora
 	messages.erase(messages.begin());

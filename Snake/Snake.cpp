@@ -23,6 +23,7 @@ void Snake::reset()
 	setDirection(Direction::None);
 
 	//Parametry startowe weza
+	snakeScore = 0;
 	snakeSpeed = 10;
 	snakeLives = 3;
 	snakeLost = false;

@@ -12,13 +12,8 @@ Engine::Engine(): gameWindow(),snake(),world(Vector2u(800,600))
 	//£aduje teksturê t³a
 	gameBackgroudTexture.loadFromFile("data/background.png");
 	gameBackgroudSprite.setTexture(gameBackgroudTexture);
-	textbox.setup(5, 14, 250, Vector2f(225, 0));
-	live = "Liczba zyc: " + snake.getLives();
-	textbox.add(live);
-	score = "Wynik: " + snake.getScore();
-	textbox.add(score);
-	textbox.render(gameWindow);
-	//cout << snake.getLives();
+	scoreBox.setup(1, 20, 80, Vector2f(398, 0));
+	liveBox.setup(1, 20, 85, Vector2f(313, 0));
 	snake.reset();
 }
 
@@ -36,6 +31,8 @@ void Engine::start()
 		input();
 		draw();
 		update();
+		scoreBox.clear();
+		liveBox.clear();
 		restartClock();
 	}
 
