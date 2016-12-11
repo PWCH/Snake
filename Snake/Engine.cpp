@@ -1,13 +1,13 @@
 #include "Engine.h"
 
-Engine::Engine(): gameWindow(),snake(),world(Vector2u(800,600))
+Engine::Engine(): gameWindow(), snake(), world(Vector2u(800, 600))
 {
 	//Pobiera rozdzielczosc ekranu, tworzy okno gry
 	Vector2u resolution;
 	resolution.x = 800;
 	resolution.y = 600;
 
-	gameWindow.create(VideoMode(resolution.x, resolution.y), "Snake Game");
+	//gameWindow.create(VideoMode(resolution.x, resolution.y), "Snake Game");
 
 	//£aduje teksturê t³a
 	gameBackgroudTexture.loadFromFile("data/background.png");
@@ -28,6 +28,7 @@ void Engine::start()
 			if (event.type == sf::Event::Closed)
 				gameWindow.close();
 		}
+
 		input();
 		draw();
 		update();
