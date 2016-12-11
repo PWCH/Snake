@@ -15,7 +15,7 @@ public:
 	//Obsluga klawiatury
 	void input();
 	void update();
-	void start();
+	void start(RenderWindow &menuWindow);
 	void draw();
 	//Zwraca czas ktory uplynal
 	Time getElapsed();
@@ -23,7 +23,7 @@ public:
 	void restartClock();
 	Clock clock;
 	Time elapsed;
-
+	
 private:
 	RenderWindow gameWindow;
 	//Deklaracja sprite i tekstury tla
@@ -32,13 +32,17 @@ private:
 	//Inicjacja gracza
 	Snake snake;
 	World world;
+	Event event;
+	//bool pause;
 	//StateType menu;
 	string score;
 	string live;
 	Textbox scoreBox;
 	Textbox liveBox;
+	Textbox gameoverBox;
+
 };
 
-enum class StateType {
-	Intro = 1, MainMenu, Game, Paused, GameOver, Credits
-};
+//enum class StateType {
+//	Intro = 1, MainMenu, Game, Paused, GameOver, Credits
+//};

@@ -10,4 +10,9 @@ void Engine::input()
 		snake.setDirection(Direction::Left);
 	if (Keyboard::isKeyPressed(Keyboard::Right) && (snake.getDirection() != Direction::Left))
 		snake.setDirection(Direction::Right);
+	//if (Keyboard::isKeyPressed(Keyboard::P))
+	//{
+	//	pause = !pause;
+	//	gameoverBox.render(gameWindow);
+	//}
 }

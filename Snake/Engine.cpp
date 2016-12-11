@@ -1,42 +1,40 @@
 #include "Engine.h"
 
-Engine::Engine(): gameWindow(), snake(), world(Vector2u(800, 600))
+Engine::Engine(): snake(), world(Vector2u(800, 600))
 {
 	//Pobiera rozdzielczosc ekranu, tworzy okno gry
 	Vector2u resolution;
 	resolution.x = 800;
 	resolution.y = 600;
 
-	//gameWindow.create(VideoMode(resolution.x, resolution.y), "Snake Game");
+	gameWindow.create(VideoMode(resolution.x, resolution.y), "Snake Game");
 
 	//£aduje teksturê t³a
 	gameBackgroudTexture.loadFromFile("data/background.png");
 	gameBackgroudSprite.setTexture(gameBackgroudTexture);
-	scoreBox.setup(1, 20, 80, Vector2f(398, 0));
-	liveBox.setup(1, 20, 85, Vector2f(313, 0));
+	scoreBox.setup(1, 25, 180, Vector2f(390, 0));
+	liveBox.setup(1, 25, 190, Vector2f(200, 0));
+	gameoverBox.setup(3, 30, 150, Vector2f(resolution.x / 2 - 50, resolution.y / 2 - 50));
 	snake.reset();
 }
 
-void Engine::start()
+void Engine::start(RenderWindow &menuWindow)
 {
-	while (gameWindow.isOpen())
+	while (menuWindow.isOpen())
 	{
-		Event event;
-		while (gameWindow.pollEvent(event))
-		{
-			// Zamykanie okna - exit
-			if (event.type == sf::Event::Closed)
-				gameWindow.close();
-		}
-
 		input();
 		draw();
-		update();
+		//if (!pause)
+		//{
+			update();
+		//};
 		scoreBox.clear();
 		liveBox.clear();
 		restartClock();
+		if (!(gameWindow.isOpen()))
+			break;
 	}
-
+	menuWindow.display();
 }
 
 Time Engine::getElapsed()
@@ -55,20 +53,6 @@ Engine::~Engine()
 
 void Engine::update()
 {
-	//switch (menu)
-	//{
-	//	case(StateType::Intro):
-	//		updateIntro();
-	//		break;
-	//	case(StateType::Game):
-	//		updateGame();
-	//		break;
-	//	case(StateType::MainMenu):
-	//		updateMenu();
-	//		break;
-	//	default:
-	//		break;
-	//}
 	float timestep = 0.1f / snake.getSpeed();
 	float timeInSec = elapsed.asSeconds();
 	if (timeInSec >= timestep)
@@ -76,7 +60,8 @@ void Engine::update()
 		snake.update();
 		world.update(snake);
 		if (snake.hasLost())
-			snake.reset();
-		
+		{
+			gameWindow.close();
+		}
 	}
 }

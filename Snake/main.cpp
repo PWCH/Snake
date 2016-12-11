@@ -4,18 +4,21 @@
 
 int main()
 {
-	RenderWindow gameWindow(VideoMode(800, 600), "Snake");
-
-	Vector2u size(gameWindow.getSize().x, gameWindow.getSize().y);
+	RenderWindow menuWindow(VideoMode(800, 600), "Snake");
+	Texture gameBackgroudTexture;
+	Sprite gameBackgroudSprite;
+	gameBackgroudTexture.loadFromFile("data/menu.png");
+	gameBackgroudSprite.setTexture(gameBackgroudTexture);
+	Vector2u size(menuWindow.getSize().x, menuWindow.getSize().y);
 
 	Menu menu(size);
+	
 
-	while (gameWindow.isOpen())
+	while (menuWindow.isOpen())
 	{
 		Event event;
-		Engine engine;
 
-		while (gameWindow.pollEvent(event))
+		while (menuWindow.pollEvent(event))
 		{
 			switch (event.type)
 			{
@@ -24,41 +27,41 @@ int main()
 				{
 				case Keyboard::Up:
 					menu.moveUp();
-					cout << "Gora";
-					menu.getPressedItem();
+					//cout << "Gora";
 					break;
 
 				case Keyboard::Down:
 					menu.moveDown();
-					cout << "Dol";
-					menu.getPressedItem();
+					//cout << "Dol";
 					break;
 
 				case Keyboard::Return:
+					Engine engine;
+					switch (menu.getPressedItem())
 					{
 					case 0:
-						engine.start();
+						engine.start(menuWindow);
+						//cout << "Tutaj";
+						menuWindow.clear();
 						break;
 					case 1:
-						cout << "Option button has been pressed";
+						cout << "Wyniki jeszcze nie dodane";
 						break;
 					case 2:
-						gameWindow.close();
+						menuWindow.close();
 						break;
 					}
-
 					break;
 				}
-
 				break;
 			case Event::Closed:
-				gameWindow.close();
+				menuWindow.close();
 				break;
 			}
 		}
-
-		gameWindow.clear();
-		menu.draw(gameWindow);
-		gameWindow.display();
+		menuWindow.clear();
+		menuWindow.draw(gameBackgroudSprite);
+		menu.draw(menuWindow);
+		menuWindow.display();
 	}
 }

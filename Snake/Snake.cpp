@@ -63,6 +63,10 @@ void Snake::increaseScore()
 {
 	snakeScore += 10;
 }
+void Snake::increaseSpeed()
+{
+	snakeSpeed += 1;
+}
 bool Snake::hasLost()
 {
 	return snakeLost;

@@ -24,7 +24,7 @@ void Textbox::setup(int visible, int charSize, int width, Vector2f screenPos)
 	Vector2f offset(4.0f, 0.0f);
 
 	//Cechy czcionki
-	if (!(font.loadFromFile("data/above.otf")))
+	if (!(font.loadFromFile("data/MEgalopolisExtra.otf")))
 	{
 		cout << "Nie zaladowano czcionki!";
 	}

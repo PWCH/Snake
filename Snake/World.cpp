@@ -24,12 +24,16 @@ World::World(Vector2u wSize)
 	for (int i = 0; i < 4; ++i)
 	{
 		bounds[i].setFillColor(Color(150, 0, 0));
-		if (!((i + 1) % 2))
-			bounds[i].setSize(Vector2f(windowSize.x, size));
+		if (!((i + 1) % 2) && (i != 1))
+			bounds[i].setSize(Vector2f(windowSize.x, size - 9));
 		else
-			bounds[i].setSize(Vector2f(size, windowSize.y));
+			bounds[i].setSize(Vector2f(size - 9, windowSize.y));
 		if (i < 2)
+		{
+			if (i < 1)
+				bounds[i].setSize(Vector2f(windowSize.x, size + 10));
 			bounds[i].setPosition(0, 0);
+		}
 		else
 		{
 			bounds[i].setOrigin(bounds[i].getSize());
@@ -45,11 +49,11 @@ World::~World()
 
 void World::respawnFood()
 {
-	//Maksymalne pole gdzie moze znalezc sie jedzenie (jeszcze trzeba zmienic)
-	int maxX = (windowSize.x / size) - 2;
-	int maxY = (windowSize.y / size) - 2;
+	//Maksymalne pole gdzie moze znalezc sie jedzenie
+	int maxX = (windowSize.x / size) - 3;
+	int maxY = (windowSize.y / size) - 3;
 	//Losowe umieszczanie jedzenia 
-	item = Vector2i(rand() % maxX + 1, rand() % maxY + 1);
+	item = Vector2i(rand() % maxX + 3, rand() % maxY + 3);
 	foodShape.setPosition(item.x * size, item.y * size);
 }
 
@@ -61,6 +65,7 @@ void World::update(Snake &player)
 		music.play();
 		player.increase();
 		player.increaseScore();
+		player.increaseSpeed();
 		respawnFood();
 	}
 
@@ -69,7 +74,7 @@ void World::update(Snake &player)
 	int gridSizeY = windowSize.y / size;
 
 	//Warunki do straty zycia
-	if (player.getPosition().x <= 0 || player.getPosition().y <= 0 || player.getPosition().x >= gridSizeX - 1 || player.getPosition().y >= gridSizeY - 1)
+	if (player.getPosition().x <= 0 || player.getPosition().y <= 1 || player.getPosition().x >= gridSizeX || player.getPosition().y >= gridSizeY)
 	{
 		player.lose();
 	}

@@ -39,6 +39,8 @@ public:
 	int getSpeed();
 	//Zwiekszanie wyniku
 	void increaseScore();
+	//Zwiekszanie predkosci
+	void increaseSpeed();
 	//Strata zycia
 	bool hasLost();
 

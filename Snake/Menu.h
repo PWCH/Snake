@@ -17,7 +17,7 @@ public:
 	void draw(RenderWindow &gameWindow);
 	void moveUp();
 	void moveDown();
-	int getPressedItem();
+	int getPressedItem() { return selected; };
 
 private:
 	int selected;
