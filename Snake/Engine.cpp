@@ -53,7 +53,7 @@ Engine::~Engine()
 
 void Engine::update()
 {
-	float timestep = 0.1f / snake.getSpeed();
+	float timestep = 1.0f / snake.getSpeed();
 	float timeInSec = elapsed.asSeconds();
 	if (timeInSec >= timestep)
 	{

@@ -30,7 +30,7 @@ Menu::~Menu()
 {
 }
 
-void Menu::draw(sf::RenderWindow &window)
+void Menu::draw(RenderWindow &window)
 {
 	for (int i = 0; i < MAXNUM; i++)
 	{
