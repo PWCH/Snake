@@ -63,5 +63,6 @@ void Engine::update()
 		{
 			gameWindow.close();
 		}
+		elapsed -= seconds(timestep);
 	}
 }

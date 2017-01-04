@@ -4,7 +4,6 @@ using namespace sf;
 
 void Engine::draw()
 {
-	gameWindow.setFramerateLimit(10);
 	gameWindow.draw(gameBackgroudSprite);
 	world.render(gameWindow);
 	snake.render(gameWindow);
